@@ -38,4 +38,8 @@ class Util(object):
         return self
 
     def __str__(self):
+        self.command = self.command[0:1]
         return self.stdout.decode("UTF-8")
+
+    def __invert__(self):
+        sys.stdout.write(str(self))

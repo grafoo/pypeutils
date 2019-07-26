@@ -1,4 +1,5 @@
 from os import linesep
+from unittest.mock import patch, call
 from .utils import Util
 
 
@@ -30,3 +31,10 @@ def test_pipe_printf_grep_cut():
     assert str(
         printf("'cat,dog,kraken\ncat,ape,kraken\n'") | grep("dog") | cut("-d ',' -f 3")
     ) == "kraken{}".format(linesep)
+
+
+@patch("sys.stdout")
+def test_quick_print(mock_stdout):
+    echo = Util("echo")
+    ~echo("Kwik-E-Mart")
+    assert mock_stdout.mock_calls == [call.write("Kwik-E-Mart{}".format(linesep))]

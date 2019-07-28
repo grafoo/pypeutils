@@ -33,6 +33,35 @@ def test_pipe_printf_grep_cut():
     ) == "kraken{}".format(linesep)
 
 
+def test_util_reuse_pipe_printf_grep_cut():
+    printf = Util("printf")
+    grep = Util("grep")
+    cut = Util("cut")
+    assert str(
+        printf("'cat,dog,kraken\ncat,ape,kraken\n'") | grep("dog") | cut("-d ',' -f 3")
+    ) == "kraken{}".format(linesep)
+    assert str(
+        printf("'tent;house;space station\ntent;trailer;space station\n'")
+        | grep("trailer")
+        | cut("-d; -f3")
+    ) == "space station{}".format(linesep)
+
+
+def test_pipe_printf_grep_cut_cut():
+    printf = Util("printf")
+    grep = Util("grep")
+    cut = Util("cut")
+    assert str(
+        printf("'cat,dog,kraken\ncat,ape,kraken\n'") | grep("dog") | cut("-d ',' -f 3")
+    ) == "kraken{}".format(linesep)
+    assert str(
+        printf("'tent;house;space station\ntent;trailer;space station\n'")
+        | grep("trailer")
+        | cut("-d; -f3")
+        | cut("-d ' ' -f 1")
+    ) == "space{}".format(linesep)
+
+
 @patch("sys.stdout")
 def test_quick_print(mock_stdout):
     echo = Util("echo")

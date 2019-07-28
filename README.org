@@ -1,21 +1,25 @@
 * About
+#+BEGIN_CENTER
 Already got yourself some shiny binutils, coreutils, diffutils, findutils, ...?
-
 You regularly pipe those guys together, producing oneliners from hell?
-
 Ever wished you could fire up those quick n' dirty scripts directly in python?
-
 Now your wildest pipe dreams are just one ~import~ away!
+#+END_CENTER
 
 * Usage
 #+BEGIN_SRC python
-  from pypeutils import Util, printf
-
-  rev = Util("rev")
-  output = printf("dog") | rev()
-  print(output)
+  # Print output using builtins.print
+  >>> from pypeutils import Util, printf
+  >>> rev = Util("rev")
+  >>> output = printf("dog") | rev()
+  >>> print(output)
+  god
 
   # Write to stdout using the quick print operator
-  ~echo("Kwik-E-Mart")
-  ~(echo("lager") | rev())
+  >>> from pypeutils import echo
+  >>> ~echo("Kwik-E-Mart")
+  Kwik-E-Mart
+  >>> ~(echo("lager") | rev())
+  regal
+
 #+END_SRC

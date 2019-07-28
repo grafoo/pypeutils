@@ -5,6 +5,15 @@ import re
 
 
 class Util(object):
+    """Create a process with the given command.
+
+    >>> printf = Util("printf")
+    >>> rev = Util("rev")
+    >>> output = printf("dog") | rev()
+    >>> print(output)
+    god
+    """
+
     def __init__(self, command):
         self.command = split(command)
         self.stdout = None

@@ -56,5 +56,5 @@ class Util(object):
     def __str__(self):
         return self.stdout.decode("UTF-8")
 
-    def __invert__(self):
+    def __neg__(self):
         sys.stdout.write(str(self))

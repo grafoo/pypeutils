@@ -17,9 +17,9 @@ Now your wildest pipe dreams are just one ~import~ away!
 
   # Write to stdout using the quick print operator
   >>> from pypeutils import echo
-  >>> ~echo("Kwik-E-Mart")
+  >>> -echo("Kwik-E-Mart")
   Kwik-E-Mart
-  >>> ~(echo("lager") | rev())
+  >>> -(echo("lager") | rev())
   regal
 
 #+END_SRC

@@ -65,5 +65,5 @@ def test_pipe_printf_grep_cut_cut():
 @patch("sys.stdout")
 def test_quick_print(mock_stdout):
     echo = Util("echo")
-    ~echo("Kwik-E-Mart")
+    -echo("Kwik-E-Mart")
     assert mock_stdout.mock_calls == [call.write("Kwik-E-Mart{}".format(linesep))]
